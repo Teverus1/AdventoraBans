@@ -1,0 +1,57 @@
+  # AdventoraBans Configuration
+  # ============================
+
+  # Database Settings
+  # Type: MYSQL or SQLITE
+  # SQLite is recommended for small servers (local file).
+  # MySQL is recommended for large servers or BungeeCord setups (external database).
+  database:
+    type: SQLITE # Options: SQLITE, MYSQL
+
+    # MySQL Settings (Only if database.type is MYSQL)
+    mysql:
+      host: localhost
+      port: 3306
+      database: adventorabans
+      username: user
+      password: password
+      use_ssl: false # Should SSL be used for MySQL connection?
+      # Connection Pool Settings (HikariCP)
+      pool:
+        maximum_pool_size: 10
+        minimum_idle: 5
+        connection_timeout: 30000 # milliseconds
+        idle_timeout: 600000 # milliseconds
+        max_lifetime: 1800000 # milliseconds
+
+  debug_mode: false # Установите true для включения подробных отладочных сообщений
+
+  # Ban/Mute/Kick Settings
+  settings:
+    # Should the plugin broadcast ban/mute/kick messages to the entire server?
+    broadcast_punishments: true
+    # List of commands that muted players are still allowed to use.
+    # (Do NOT include /adventorabans:command, just the command name like 'help' or 'spawn')
+    allowed_muted_commands:
+      - "help"
+      - "spawn"
+      - "rules"
+      - "msg" # Private messages might be allowed if you handle them separately
+
+  # Time Unit Aliases (for tempban/tempmute commands)
+  time_units:
+    s: [second, seconds]
+    m: [minute, minutes]
+    h: [hour, hours]
+    d: [day, days]
+    w: [week, weeks]
+    mo: [month, months]
+    y: [year, years]
+
+  # Auto-deactivation of expired punishments (not just on login/chat)
+  # Set to 0 to disable automatic cleanup. Interval in minutes.
+  cleanup_interval_minutes: 60
+
+  # ============================
+  # DO NOT EDIT BELOW THIS LINE
+  # ============================

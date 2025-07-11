@@ -1,0 +1,158 @@
+name: AdventoraBans
+version: '${project.version}' # Автоматически подставляется из pom.xml
+main: org.teverus.adventoraBans.AdventoraBans
+api-version: 1.20 # Минимальная версия API, для 1.21 можно поставить 1.20 или 1.19
+authors: [Teverus]
+description: Система банов/мутов/киков и тк.д. для проекта Adventora.
+softdepend: [PlaceholderAPI, Chat] # Если планируете интеграцию с PlaceholderAPI
+
+commands:
+
+  # Команды для бана
+  ban:
+    description: Permanently ban a player.
+    usage: /ban <player> <reason>
+    permission: adventorabans.command.ban
+    aliases: [b]
+  tempban:
+    description: Temporarily ban a player.
+    usage: /tempban <player> <duration> <reason>
+    permission: adventorabans.command.tempban
+    aliases: [tb]
+  unban:
+    description: Unban a player.
+    usage: /unban <player>
+    permission: adventorabans.command.unban
+    aliases: [ub]
+  banlist:
+    description: Shows a list of active bans.
+    usage: /banlist [page]
+    permission: adventorabans.command.banlist а
+
+  # Команды для мута
+  mute:
+    description: Permanently mute a player.
+    usage: /mute <player> <reason>
+    permission: adventorabans.command.mute
+    aliases: [m]
+  tempmute:
+    description: Temporarily mute a player.
+    usage: /tempmute <player> <duration> <reason>
+    permission: adventorabans.command.tempmute
+    aliases: [tm]
+  unmute:
+    description: Unmute a player.
+    usage: /unmute <player>
+    permission: adventorabans.command.unmute
+    aliases: [um]
+
+  # Команды для кика
+  kick:
+    description: Kick a player from the server.
+    usage: /kick <player> <reason>
+    permission: adventorabans.command.kick
+    aliases: [k]
+
+  # Команды для IP-бана
+  ipban:
+    description: Permanently ban an IP address.
+    usage: /ipban <ip|player> <reason>
+    permission: adventorabans.command.ipban
+    aliases: [bip]
+  # --- ДОБАВЛЕНА НОВАЯ КОМАНДА IPTEMPBAN ---
+  iptempban:
+    description: Temporarily ban an IP address.
+    usage: /iptempban <ip|player> <duration> <reason>
+    permission: adventorabans.command.iptempban
+    aliases: [tib]
+  # ------------------------------------------
+  ipunban:
+    description: Unban an IP address.
+    usage: /ipunban <ip|player>
+    permission: adventorabans.command.ipunban
+    aliases: [ubip]
+  ipinfo:
+    description: Get information about a player's or IP's history.
+    usage: /ipinfo <player|ip>
+    permission: adventorabans.command.ipinfo
+    aliases: [ipi]
+
+  # НОВЫЕ КОМАНДЫ (из вашего предыдущего plugin.yml)
+  history:
+    description: View a player's or IP's punishment history.
+    usage: /history <player|ip> [page]
+    permission: adventorabans.command.history
+    aliases: [punishmenthistory, ph]
+  lookup:
+    description: Check a player's or IP's current active punishment.
+    usage: /lookup <player|ip>
+    permission: adventorabans.command.lookup
+    aliases: [check, c]
+  reload:
+    description: Reload the AdventoraBans plugin configuration.
+    usage: /reload
+    permission: adventorabans.command.reload
+  adventorabans:
+    description: Main command for AdventoraBans plugin.
+    usage: /adventorabans [reload|help]
+    permission: adventorabans.command.admin
+    aliases: [ab]
+
+permissions:
+  adventorabans.*:
+    description: Grants all AdventoraBans permissions.
+    default: op
+  adventorabans.command.ban:
+    description: Allows banning players.
+    default: op
+  adventorabans.command.tempban:
+    description: Allows temporarily banning players.
+    default: op
+  adventorabans.command.unban:
+    description: Allows unbanning players.
+    default: op
+  adventorabans.command.mute:
+    description: Allows muting players.
+    default: op
+  adventorabans.command.tempmute:
+    description: Allows temporarily muting players.
+    default: op
+  adventorabans.command.unmute:
+    description: Allows unmuting players.
+    default: op
+  adventorabans.command.kick:
+    description: Allows kicking players.
+    default: op
+  adventorabans.command.ipban:
+    description: Allows IP banning.
+    default: op
+  # --- НОВОЕ РАЗРЕШЕНИЕ ДЛЯ IPTEMPBAN ---
+  adventorabans.command.iptempban:
+    description: Allows temporarily IP banning.
+    default: op
+  # ---------------------------------------
+  adventorabans.command.ipunban:
+    description: Allows IP unbanning.
+    default: op
+  adventorabans.command.ipinfo:
+    description: Allows getting IP information.
+    default: op
+  # НОВЫЕ РАЗРЕШЕНИЯ (из вашего предыдущего plugin.yml)
+  adventorabans.command.history:
+    description: Allows viewing player/IP punishment history.
+    default: op
+  adventorabans.command.lookup:
+    description: Allows checking player/IP active punishments.
+    default: op
+  adventorabans.command.reload:
+    description: Allows reloading the plugin configuration.
+    default: op
+  adventorabans.command.admin: # Общее разрешение для главной команды
+    description: Grants access to the main AdventoraBans command and its sub-commands.
+    default: op
+  adventorabans.bypass.ban:
+    description: Allows bypassing all ban checks. (USE WITH CAUTION)
+    default: false
+  adventorabans.bypass.mute:
+    description: Allows bypassing all mute checks. (USE WITH CAUTION)
+    default: false
